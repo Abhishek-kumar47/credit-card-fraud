@@ -7,10 +7,9 @@ const Login = () => {
 
     const email = useRef(null);
     const password = useRef(null);
-    const name = useRef(null);
 
     const handleButtonClick = () => {
-    const message=checkValidate(email.current.value,password.current.value,name.current.value);
+    const message=checkValidate(email.current.value,password.current.value);
     setErrorMessage(message);
     } 
 
@@ -25,7 +24,7 @@ const toggleLogInForm = () => {
         <form onSubmit={(e) => e.preventDefault()} className="text-white absolute w-3/12 my-36 mx-36 right-20 ">
             <h1 className="font-bold text-3xl py-2 my-2">{isLogInForm? "Login" : "Sign UP"}</h1>
             <h2 className="pb-2 mb-3">{isLogInForm? "Enter your email and password below" : "Enter Name, Email and Password below"}</h2>
-           {!isLogInForm && (<input ref={name} type ="text" placeholder="Full Name" className="text-black p-4 my-4 w-full rounded-md"/>)}
+           {!isLogInForm && (<input type ="text" placeholder="Full Name" className="text-black p-4 my-4 w-full rounded-md"/>)}
             <input ref={email} type ="text" placeholder="Email Address" className="text-black p-4 my-4 w-full rounded-md"/>
             <input ref={password} type="password" placeholder="Password" className="text-black p-4 my-4 w-full rounded-md"/>
             <p className="text-red-500 font-bold text-lg py-2">{errorMessage}</p>
