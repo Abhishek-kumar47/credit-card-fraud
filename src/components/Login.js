@@ -1,6 +1,9 @@
 import React, { useRef, useState } from 'react'
 import LoginImage from '../assets/Login.png'
 import { checkValidate } from '../utils/validate';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from '../utils/firebase';
+
 const Login = () => {
     const [isLogInForm, setIsLogInForm]= useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
@@ -11,15 +14,50 @@ const Login = () => {
     const handleButtonClick = () => {
     const message=checkValidate(email.current.value,password.current.value);
     setErrorMessage(message);
-    } 
+        
+        if(message) return;
+
+        if(!isLogInForm){
+            createUserWithEmailAndPassword(auth,email.current.value,password.current.value)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    console.log(user);
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    setErrorMessage(errorCode+ "-" + errorMessage);
+    // ..
+  });
+
+        }
+        else{
+            signInWithEmailAndPassword(auth,email.current.value,password.current.value)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    console.log(user);
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    setErrorMessage(errorCode+ "-" + errorMessage);
+  });
+
+        }
+    }; 
 
 const toggleLogInForm = () => {
     setIsLogInForm(!isLogInForm);
 
+
 }
 
   return (
-    <div className="w-screen h-screen bg-black flex">
+    <div className="w-screen bg-black flex">
       <img className=" px-14 m-8 rounded-md" src={LoginImage} alt="login"/>
         <form onSubmit={(e) => e.preventDefault()} className="text-white absolute w-3/12 my-36 mx-36 right-20 ">
             <h1 className="font-bold text-3xl py-2 my-2">{isLogInForm? "Login" : "Sign UP"}</h1>
