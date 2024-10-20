@@ -24,10 +24,10 @@ const Header = () => {
       <img src={logofr} alt='logoimg' className='h-16 w-28invert invert' />
       <div className='top-0 items-center'>
         <nav className='flex gap-[65%] mt-4 mr-96'>
-          <a href="#" className='nav-item font-myFont2 text-2xl text-white'>Home</a>
-          <a href="#" className='nav-item font-myFont2 text-2xl text-white'>Features</a>
-          <a href="#" className='nav-item font-myFont2 text-2xl text-white'>Solutions</a>
-          <a href="#" className='nav-item font-myFont2 text-2xl text-white'>FAQ</a>
+        <a href="#" className="nav-item font-myFont2 text-2xl text-white relative after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white after:left-0 after:bottom-[-2px] after:scale-x-0 after:origin-left after:transition-transform after:duration-500 hover:after:scale-x-100">Home</a>
+        <a href="#" className="nav-item font-myFont2 text-2xl text-white relative after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white after:left-0 after:bottom-[-2px] after:scale-x-0 after:origin-left after:transition-transform after:duration-500 hover:after:scale-x-100">Features</a>
+        <a href="#" className="nav-item font-myFont2 text-2xl text-white relative after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white after:left-0 after:bottom-[-2px] after:scale-x-0 after:origin-left after:transition-transform after:duration-500 hover:after:scale-x-100">Solutions</a>
+        <a href="#" className="nav-item font-myFont2 text-2xl text-white relative after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white after:left-0 after:bottom-[-2px] after:scale-x-0 after:origin-left after:transition-transform after:duration-500 hover:after:scale-x-100">FAQ</a> 
         </nav>
       </div>
         <div className='grid grid-cols-2 ml-40 mt-2'>
