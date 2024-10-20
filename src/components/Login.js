@@ -78,7 +78,7 @@ const toggleLogInForm = () => {
 }
 
   return (
-    <div className="w-screen bg-black flex">
+    <div className="w-screen h-screen bg-black flex">
       <img className=" px-14 m-8 rounded-md" src={LoginImage} alt="login"/>
         <form onSubmit={(e) => e.preventDefault()} className="text-white absolute w-3/12 my-36 mx-36 right-20 ">
             <h1 className="font-bold text-3xl py-2 my-2">{isLogInForm? "Login" : "Sign UP"}</h1>
