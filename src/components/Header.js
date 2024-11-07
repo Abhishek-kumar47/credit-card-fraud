@@ -3,6 +3,7 @@ import React from 'react'
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import logofr from '../assets/logofr.png';
 
 const Header = () => {
     const navigate = useNavigate(); 
@@ -19,7 +20,7 @@ const Header = () => {
   return (
   
  
-     <div className="w-screen h-11 px-8 py-2 flex justify-between">
+     <div className="w-screen px-8 py-2 flex justify-between">
         <img src={user?.photoURL} alt="profile"/>
       <button onClick={handleSignOut} className="bg-black text-white rounded-md w-28">Sign out</button>
     </div>

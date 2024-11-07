@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'MyLocalFont';
+    src: url('./assets/fonts/MyLocalFont.ttf') format('truetype');
+  }
+@font-face {
+    font-family: 'zeroes_1';
+    src: url('./assets/fonts/zeroes_1.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'myFont3';
+    src: url('./assets/fonts/myFont3.ttf') format('truetype');
+}
+
