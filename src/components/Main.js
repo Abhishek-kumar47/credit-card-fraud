@@ -1,5 +1,6 @@
 import card from '../assets/card1.png';
 import person from '../assets/output.png'
+import Footer from './Footer';
 import Second from './Second';
 
 const Main = () => {
@@ -65,6 +66,7 @@ const Main = () => {
       
       </div>
       <Second />
+      <Footer />
   </>
   );
 };

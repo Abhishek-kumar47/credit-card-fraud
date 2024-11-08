@@ -1,9 +1,9 @@
 import React from 'react'
-
+import Header from './Header'
 const Ftre = () => {
   return (
-    <div>
-      
+    <div className='bg-black'>
+      <Header/>
     </div>
   )
 }
