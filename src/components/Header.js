@@ -24,7 +24,7 @@ const Header = () => {
   };
 
   return (
-    <div className="w-screen px-8 py-4 flex justify-between items-center">
+    <div className="w-screen px-8 py-4 bg-black flex justify-between items-center">
       
       {/* Logo aligned to the left */}
       <div className="flex-shrink-0">
