@@ -1,9 +1,11 @@
 import card from '../assets/card1.png';
 import person from '../assets/output.png'
+import Second from './Second';
 
 const Main = () => {
   return (
-    <div className="flex justify-center items-center h-screen overflow-hidden space-x-10">
+    <>
+    <div className="flex justify-center items-center space-x-10">
       <div className="flex-1 font-MONO pb-[13%] pl-[7%] text-white">
         <p className="tracking-widest leading-relaxed text-[36px]">
           FORTIFYING TRUST,
@@ -56,9 +58,14 @@ const Main = () => {
             </div>
             <div className="text-sm tracking-wider font-serif">DATA COMPLIANCE</div>
           </div>
+
         </div>
+        
       </div>
-    </div>
+      
+      </div>
+      <Second />
+  </>
   );
 };
 

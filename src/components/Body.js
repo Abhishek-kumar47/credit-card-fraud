@@ -7,7 +7,9 @@ import Login from './Login'
 import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
-
+import Home from './Home';
+import InputForm from './InputForm';
+import Ftre from './Ftre';
 const Body = () => {
     const dispatch = useDispatch();
     const appRouter = createBrowserRouter([
@@ -19,6 +21,18 @@ const Body = () => {
             path: "/browse",
             element: <Browse/>,
         },
+        {
+          path: "/browse",
+          element: <Home/>,
+      },
+      {
+          path:"/ftre",
+          element: <Ftre/>,
+      },
+      {
+        path: "/inputform",
+        element: <InputForm/>,
+      },
     ]);
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
