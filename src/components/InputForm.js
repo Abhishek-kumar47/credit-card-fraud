@@ -5,7 +5,7 @@ import Header from "./Header";
 
 function InputForm() {
   const navigate = useNavigate();
-  const dataFromExcel = useExcelData("../assets/Dataset.xlsx"); // Replace with the actual path
+  const dataFromExcel = useExcelData("../assets/Dataset.xlsx"); 
 
   const [formData, setFormData] = useState({
     amount: "",
@@ -17,7 +17,7 @@ function InputForm() {
     gender: ""
   });
 
-  const [error, setError] = useState(""); // State to store error messages
+  const [error, setError] = useState(""); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,7 +25,7 @@ function InputForm() {
       ...formData,
       [name]: value
     });
-    setError(""); // Clear error when a field changes
+    setError(""); 
   };
 
   const handleSubmit = (e) => {
@@ -36,7 +36,7 @@ function InputForm() {
       return;
     }
 
-    // Normalize formData for comparison
+    
     const normalizedFormData = {
       amount: parseFloat(formData.amount),
       cardBalance: parseFloat(formData.cardBalance),
@@ -47,7 +47,7 @@ function InputForm() {
       gender: formData.gender.trim(),
     };
 
-    // Validate data against the Excel file data
+   
     const isValid = dataFromExcel.some((row) => {
       return (
         parseFloat(row.Amount) === normalizedFormData.amount &&

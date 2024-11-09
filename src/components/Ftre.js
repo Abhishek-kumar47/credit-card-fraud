@@ -7,20 +7,19 @@ const Ftre = () => {
     <Header />
     <div className="relative -z-20 w-screen h-screen">
       
-      {/* Dark Gradient Background */}
+      
       <div className="absolute inset-0  bg-gradient-to-b from-purple-400 via-purple-800 to-black opacity-80"></div>
   
-      {/* Content Section with Image */}
       <div className="absolute inset-0 flex items-center justify-center z-50">
        
       </div>
   
-      {/* Features Section */}
+    
       <div className="absolute bottom-0 w-full z-50 p-10 bg-opacity-90">
         <h2 className="text-3xl font-bold text-center mb-6 text-white">Key Features</h2>
   
         <div className="space-y-8">
-          {/* Adaptive Learning Model */}
+         
           <div className="p-6 bg-gray-800 rounded-lg shadow-md text-white ">
             <h3 className="text-2xl font-semibold mb-2">Adaptive Learning Model</h3>
             <p>
@@ -28,7 +27,6 @@ const Ftre = () => {
             </p>
           </div>
   
-          {/* Detailed Fraud Analysis and Reports */}
           <div className="p-6 bg-gray-800 rounded-lg shadow-md text-white">
             <h3 className="text-2xl font-semibold mb-2">Detailed Fraud Analysis and Reports</h3>
             <p>
@@ -36,7 +34,7 @@ const Ftre = () => {
             </p>
           </div>
   
-          {/* User-Friendly Dashboard and Control Center */}
+          
           <div className="p-6 bg-gray-800 rounded-lg shadow-md text-white">
             <h3 className="text-2xl font-semibold mb-2">User-Friendly Dashboard and Control Center</h3>
             <p>
@@ -44,7 +42,7 @@ const Ftre = () => {
             </p>
           </div>
   
-          {/* Multi-Layered Authentication */}
+        
           <div className="p-6 bg-gray-800 rounded-lg shadow-md text-white">
             <h3 className="text-2xl font-semibold mb-2">Multi-Layered Authentication</h3>
             <p>
