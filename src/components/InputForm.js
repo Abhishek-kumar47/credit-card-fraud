@@ -14,10 +14,11 @@ function InputForm() {
     category: "",
     state: "",
     job: "",
-    gender: ""
+    gender: "",
+    cardNumber: "" // Updated to cardNumber
   });
 
-  const [error, setError] = useState(""); // State to store error messages
+  const [error, setError] = useState(""); // State to hold the error message
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,50 +26,27 @@ function InputForm() {
       ...formData,
       [name]: value
     });
-    setError(""); // Clear error when a field changes
+  };
+
+  const validateCardNumber = (cardNumber) => {
+    // Check if the card number is between 9 to 16 digits
+    const regex = /^[0-9]{9,16}$/;
+    return regex.test(cardNumber);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (Object.values(formData).some((field) => field === "")) {
-      setError("All fields are required.");
+    // Validate the card number
+    if (!validateCardNumber(formData.cardNumber)) {
+      setError("Card number must be between 9 and 16 digits.");
       return;
     }
 
-    // Normalize formData for comparison
-    const normalizedFormData = {
-      amount: parseFloat(formData.amount),
-      cardBalance: parseFloat(formData.cardBalance),
-      merchant: formData.merchant.trim(),
-      category: formData.category.trim(),
-      state: formData.state.trim(),
-      job: formData.job.trim(),
-      gender: formData.gender.trim(),
-    };
+    // Clear any previous error
+    setError("");
 
-    // Validate data against the Excel file data
-    const isValid = dataFromExcel.some((row) => {
-      return (
-        parseFloat(row.Amount) === normalizedFormData.amount &&
-        parseFloat(row['Card Balance']) === normalizedFormData.cardBalance &&
-        row.Merchant.trim() === normalizedFormData.merchant &&
-        row.Category.trim() === normalizedFormData.category &&
-        row.State.trim() === normalizedFormData.state &&
-        row.Job.trim() === normalizedFormData.job &&
-        row.Gender.trim() === normalizedFormData.gender
-      );
-    });
-
-    if (!isValid) {
-      setError("No matching data found in the Excel sheet.");
-      console.log("Form Data:", normalizedFormData);
-console.log("Excel Data:", dataFromExcel);
-
-      return;
-      
-    }
-
+    // Navigate to the dashboard page with formData as state
     navigate("/dashboard", { state: { formData } });
   };
 
@@ -80,8 +58,6 @@ console.log("Excel Data:", dataFromExcel);
         className="max-w-lg mx-auto p-6 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 shadow-lg rounded-lg space-y-6 mt-12"
       >
         <h2 className="text-2xl font-semibold text-white text-center">Input Form</h2>
-        
-        {error && <p className="text-red-500 text-center">{error}</p>}
 
         <div className="grid grid-cols-2 gap-4">
           <div>
@@ -95,7 +71,7 @@ console.log("Excel Data:", dataFromExcel);
               className="w-full p-3 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-600 text-white"
             />
           </div>
-          
+
           <div>
             <label className="block text-gray-300 mb-1">Card Balance</label>
             <input
@@ -154,6 +130,19 @@ console.log("Excel Data:", dataFromExcel);
               onChange={handleChange}
               className="w-full p-3 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-600 text-white"
             />
+          </div>
+
+          <div>
+            <label className="block text-gray-300 mb-1">Card Number</label>
+            <input
+              type="text"
+              name="cardNumber"
+              placeholder="Enter card number"
+              value={formData.cardNumber}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-600 text-white"
+            />
+            {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
           </div>
         </div>
 
