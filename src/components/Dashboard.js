@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import * as XLSX from "xlsx";
-import { Bar, Pie } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import "chart.js/auto"; // Automatically register all charts
 
 const Dashboard = () => {
@@ -62,16 +62,6 @@ const Dashboard = () => {
   const fraudProbability = computeProbability();
   const isFraud = fraudProbability >= 50;
 
-  const pieData = {
-    labels: ["Merchant", "Category", "State", "Job", "Gender"],
-    datasets: [
-      {
-        data: [20, 20, 20, 20, 20],
-        backgroundColor: ["#4CAF50", "#FFC107", "#FF5722", "#3F51B5", "#009688"],
-      },
-    ],
-  };
-
   const barData = {
     labels: ["Amount", "Card Balance"],
     datasets: [
@@ -102,11 +92,6 @@ const Dashboard = () => {
       </div>
 
       <div className="flex flex-wrap gap-8">
-        <div className="w-full md:w-1/2 p-4 bg-gray-800 rounded-lg shadow">
-          <h3 className="text-xl font-semibold mb-2 text-center">Categorical Data Distribution</h3>
-          <Pie data={pieData} />
-        </div>
-
         <div className="w-full md:w-1/2 p-4 bg-gray-800 rounded-lg shadow">
           <h3 className="text-xl font-semibold mb-2 text-center">Amount vs Card Balance</h3>
           <Bar data={barData} />
