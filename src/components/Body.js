@@ -11,6 +11,7 @@ import Home from './Home';
 import InputForm from './InputForm';
 import Ftre from './Ftre';
 import Dashboard from './Dashboard';
+
 const Body = () => {
     const dispatch = useDispatch();
     const appRouter = createBrowserRouter([
@@ -38,6 +39,8 @@ const Body = () => {
         path: "/dashboard",
         element: <Dashboard/>,
       },
+     
+      
     ]);
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {

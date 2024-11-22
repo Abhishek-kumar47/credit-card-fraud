@@ -5,7 +5,7 @@ import Header from "./Header";
 
 function InputForm() {
   const navigate = useNavigate();
-  const dataFromExcel = useExcelData("../assets/Dataset.xlsx"); // Replace with the actual path
+  const dataFromExcel = useExcelData("../assets/Dataset.xlsx"); 
 
   const [formData, setFormData] = useState({
     amount: "",
@@ -18,7 +18,7 @@ function InputForm() {
     cardNumber: "" // Updated to cardNumber
   });
 
-  const [error, setError] = useState(""); // State to hold the error message
+  const [error, setError] = useState(""); // State to store error messages
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,12 +26,7 @@ function InputForm() {
       ...formData,
       [name]: value
     });
-  };
-
-  const validateCardNumber = (cardNumber) => {
-    // Check if the card number is between 9 to 16 digits
-    const regex = /^[0-9]{9,16}$/;
-    return regex.test(cardNumber);
+    setError(""); // Clear error when a field changes
   };
 
   const handleSubmit = (e) => {
@@ -43,10 +38,39 @@ function InputForm() {
       return;
     }
 
-    // Clear any previous error
-    setError("");
+    // Normalize formData for comparison
+    const normalizedFormData = {
+      amount: parseFloat(formData.amount),
+      cardBalance: parseFloat(formData.cardBalance),
+      merchant: formData.merchant.trim(),
+      category: formData.category.trim(),
+      state: formData.state.trim(),
+      job: formData.job.trim(),
+      gender: formData.gender.trim(),
+    };
 
-    // Navigate to the dashboard page with formData as state
+    // Validate data against the Excel file data
+    const isValid = dataFromExcel.some((row) => {
+      return (
+        parseFloat(row.Amount) === normalizedFormData.amount &&
+        parseFloat(row['Card Balance']) === normalizedFormData.cardBalance &&
+        row.Merchant.trim() === normalizedFormData.merchant &&
+        row.Category.trim() === normalizedFormData.category &&
+        row.State.trim() === normalizedFormData.state &&
+        row.Job.trim() === normalizedFormData.job &&
+        row.Gender.trim() === normalizedFormData.gender
+      );
+    });
+
+    if (!isValid) {
+      setError("No matching data found in the Excel sheet.");
+      console.log("Form Data:", normalizedFormData);
+console.log("Excel Data:", dataFromExcel);
+
+      return;
+      
+    }
+
     navigate("/dashboard", { state: { formData } });
   };
 

@@ -15,23 +15,23 @@ const Header = () => {
     signOut(auth)
       .then(() => {
         navigate("/");
-        // Sign-out successful.
+       
       })
       .catch((error) => {
         navigate("/error");
-        // An error happened.
+     
       });
   };
 
   return (
     <div className="w-screen px-8 py-4 bg-black flex justify-between items-center">
       
-      {/* Logo aligned to the left */}
+  
       <div className="flex-shrink-0">
         <img src={logofr} alt="logoimg" className="h-16 w-28 invert" />
       </div>
       
-      {/* Centered Navigation Links */}
+     
       <div className="flex-grow flex justify-center">
         <nav className="flex gap-48">
           <Link to="/browse" className="nav-item font-myFont2 text-2xl text-white relative after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white after:left-0 after:bottom-[-2px] after:scale-x-0 after:origin-left after:transition-transform after:duration-500 hover:after:scale-x-100">
@@ -46,7 +46,7 @@ const Header = () => {
         </nav>
       </div>
       
-      {/* User Profile Icon and Sign Out Button aligned to the right */}
+     
       <div className="flex items-center gap-4">
         <FaCircleUser className="text-white text-3xl" />
         <button 

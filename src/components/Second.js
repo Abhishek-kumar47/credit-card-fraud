@@ -13,9 +13,9 @@ const Second = () => {
   </p>
   
   <div className="grid grid-cols-2 gap-8 px-10 mt-12">
-    {/* Left Column */}
+ 
     <div className="flex flex-col space-y-6">
-      {/* User Control and Privacy */}
+      
       <div className="flex items-start space-x-4">
         <span className="text-6xl"><MdOutlineSecurity /></span>
         <div>
@@ -27,7 +27,7 @@ const Second = () => {
         </div>
       </div>
       
-      {/* Educational Resources */}
+
       <div className="flex items-start space-x-4">
         <span className="text-6xl"><LuGraduationCap /></span>
         <div>
@@ -41,9 +41,9 @@ const Second = () => {
       </div>
     </div>
     
-    {/* Right Column */}
+   
     <div className="flex flex-col space-y-6">
-      {/* Continuous Monitoring */}
+     
       <div className="flex items-start space-x-4">
         <span className="text-6xl"><BsSliders /></span>
         <div>
@@ -56,7 +56,7 @@ const Second = () => {
         </div>
       </div>
       
-      {/* Transparency */}
+    
       <div className="flex items-start space-x-4">
         <span className="text-6xl"><IoShieldCheckmarkOutline /></span>
         <div>
